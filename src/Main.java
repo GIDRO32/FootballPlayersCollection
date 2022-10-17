@@ -3,8 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Players playersTag = new Players();
-        ArrayList<Players> players = new ArrayList<>();
+        ArrayList<Player> players = new ArrayList<Player>();
         Scanner key = new Scanner(System.in);
         boolean isTyping = true;
         String symbol = null;
@@ -21,7 +20,7 @@ public class Main {
             } else if (option.toLowerCase().equals("add player")) {
                 System.out.println("Type a player data(name, surname, team-name, Player's nation, number of goals.)\nNote: if Team name or country has more than one word, divide them with a hyphen.\nFor example: Let-the-bodies-hit-the-floor");
                 String playerIn = key.nextLine();
-                Players pl = new Players();
+                Player pl = new Player();
                 pl.stringToProperties(playerIn);
                 players.add(pl);
 
@@ -51,25 +50,25 @@ public class Main {
             {
                 for (i = 0; i < players.size(); i++) {
                     System.out.println("\nPlayer " + (i + 1) + ":");
-                    playersTag.sortPlayers();
+                    players.sortPlayers();
                     players.get(i).printFullInfo();
                 }
             }
             else if (option.toLowerCase().equals("find team"))
             {
                 symbol = key.nextLine();
-                playersTag.findPlayerTeam(symbol);
+                players.findPlayerTeam(symbol);
             }
             else if (option.toLowerCase().equals("find nation"))
             {
                 symbol = key.nextLine();
-                playersTag.findPlayerNation(symbol);
+                players.findPlayerNation(symbol);
             }
             else if (option.toLowerCase().equals("find name"))
             {
                 symbol = key.nextLine();
                 System.out.println(symbol);
-                playersTag.findPlayerName(symbol);
+                players.findPlayerName(symbol);
             }
         }
     }
